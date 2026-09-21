@@ -8,11 +8,13 @@ function setTheme(theme) {
 
     document.body.classList.toggle("dark-theme", isDark);
 
-    lightThemeButton.classList.toggle("active", !isDark);
-    darkThemeButton.classList.toggle("active", isDark);
+    if (lightThemeButton && darkThemeButton) {
+        lightThemeButton.classList.toggle("active", !isDark);
+        darkThemeButton.classList.toggle("active", isDark);
 
-    lightThemeButton.setAttribute("aria-pressed", String(!isDark));
-    darkThemeButton.setAttribute("aria-pressed", String(isDark));
+        lightThemeButton.setAttribute("aria-pressed", String(!isDark));
+        darkThemeButton.setAttribute("aria-pressed", String(isDark));
+    }
 
     localStorage.setItem("theme", theme);
 }
@@ -23,10 +25,14 @@ if (savedTheme === "dark") {
     setTheme("light");
 }
 
-lightThemeButton.addEventListener("click", () => {
-    setTheme("light");
-});
+if (lightThemeButton) {
+    lightThemeButton.addEventListener("click", () => {
+        setTheme("light");
+    });
+}
 
-darkThemeButton.addEventListener("click", () => {
-    setTheme("dark");
-});
+if (darkThemeButton) {
+    darkThemeButton.addEventListener("click", () => {
+        setTheme("dark");
+    });
+}

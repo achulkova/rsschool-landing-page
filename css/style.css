@@ -805,11 +805,6 @@ body.dark-theme .app-button:hover {
     background-color: #665f55;
 }
 
-body.dark-theme .theme-button.active {
-    border-color: #c1b6ad;
-    background-color: #665f55;
-}
-
 body.dark-theme .menu-tab {
     color: #e1d4c9;
 }
