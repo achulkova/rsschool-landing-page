@@ -270,3 +270,149 @@ body {
     width: 24px;
     height: 24px;
 }
+
+.about {
+    padding-bottom: 100px;
+}
+
+.about .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.about h2 {
+    margin: 0;
+    color: #403f3d;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.about h2 span {
+    color: #b0907a;
+    font-style: italic;
+}
+
+.about-images {
+    display: flex;
+    gap: 40px;
+}
+
+.about-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 40px;
+}
+
+.about-image {
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.about-image-large {
+    height: 590px;
+}
+
+.about-image-small {
+    height: 430px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mobile-app {
+    padding-bottom: 100px;
+}
+
+.mobile-app .container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.mobile-offer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 630px;
+}
+
+.mobile-offer h2 {
+    margin: 0;
+    color: #403f3d;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.mobile-offer h2 span {
+    color: #b0907a;
+    font-style: italic;
+}
+
+.mobile-offer p {
+    margin: 0;
+    color: #403f3d;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.app-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 200px;
+    height: 64px;
+    padding: 12px 20px;
+    border: 1px solid #665f55;
+    border-radius: 100px;
+    color: #403f3d;
+    text-decoration: none;
+}
+
+.app-button img {
+    width: 36px;
+    height: 36px;
+}
+
+.app-button-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.app-button-text small {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 140%;
+}
+
+.app-button-text strong {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+.mobile-image {
+    width: 630px;
+    height: 630px;
+    flex-shrink: 0;
+}
+
+.mobile-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
