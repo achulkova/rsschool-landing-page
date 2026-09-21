@@ -8,6 +8,7 @@ html {
 
 body {
     margin: 0;
+    font-family: "Inter", sans-serif;
 }
 
 .container {
@@ -89,4 +90,183 @@ body {
 .coffee-menu img {
     width: 20px;
     height: 20px;
+}
+
+.hero-content {
+    min-height: 644px;
+    padding: 100px;
+    border-radius: 40px;
+    background-image: url("../assets/img-hero.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.offer {
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+    gap: 40px;
+}
+
+.offer h1 {
+    margin: 0;
+    color: #e1d4c9;
+    font-size: 72px;
+    font-weight: 600;
+    line-height: 105%;
+}
+
+.offer h1 span {
+    color: #b0907a;
+    font-style: italic;
+}
+
+.offer p {
+    margin: 0;
+    color: #e1d4c9;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.hero-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 64px;
+    border-radius: 100px;
+    background-color: #e1d4c9;
+    color: #403f3d;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+}
+
+.favorite-coffee {
+    padding: 100px 0;
+}
+
+.favorite-coffee .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.favorite-coffee h2 {
+    margin: 0;
+    color: #403f3d;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 125%;
+    text-align: center;
+}
+
+.favorite-coffee h2 span {
+    color: #b0907a;
+    font-style: italic;
+}
+
+.slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.coffee-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 480px;
+}
+
+.coffee-image {
+    display: block;
+    width: 480px;
+    height: 480px;
+    object-fit: contain;
+}
+
+.coffee-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.coffee-info h3 {
+    margin: 0;
+    color: #403f3d;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.coffee-info p {
+    margin: 0;
+    color: #403f3d;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.coffee-price {
+    color: #403f3d;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 1px solid #665f55;
+    border-radius: 50%;
+    background: transparent;
+    color: #403f3d;
+    font-size: 24px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.slider-button-left {
+    left: 4px;
+}
+
+.slider-button-right {
+    right: 4px;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.slider-control {
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #c1b6ad;
+}
+
+.slider-control.active {
+    background-color: #665f55;
+}
+
+.slider-button img {
+    width: 24px;
+    height: 24px;
 }

@@ -4,7 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Coffee House</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,600&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -12,6 +22,7 @@
 
     <header>
         <div class="container">
+
             <div class="header-menu">
 
                 <a href="#" class="logo">
@@ -28,12 +39,13 @@
                 <div class="header-actions">
 
                     <div class="theme-switch">
+
                         <button
                             class="theme-button light-theme"
                             type="button"
                             aria-label="Switch to light theme"
                         >
-                            <img src="assets/sun.svg" alt="">
+                            <img src="assets/Sun.svg" alt="">
                         </button>
 
                         <button
@@ -41,8 +53,9 @@
                             type="button"
                             aria-label="Switch to dark theme"
                         >
-                            <img src="assets/moon.svg" alt="">
+                            <img src="assets/Moon.svg" alt="">
                         </button>
+
                     </div>
 
                     <a href="menu.html" class="coffee-menu">
@@ -53,8 +66,119 @@
                 </div>
 
             </div>
+
         </div>
     </header>
+
+
+    <main>
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <div class="offer">
+
+                        <h1>
+                            <span>Enjoy</span> premium coffee at our charming cafe
+                        </h1>
+
+                        <p>
+                            With its inviting atmosphere and delicious coffee options,
+                            the Coffee House Resource is a popular destination for coffee
+                            lovers and those seeking a warm and inviting space to enjoy
+                            their favorite beverage.
+                        </p>
+
+                        <a href="menu.html" class="hero-button">
+                            Menu
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Favorite Coffee -->
+
+        <section class="favorite-coffee" id="favorite-coffee">
+
+            <div class="container">
+
+                <h2>
+                    Choose your <span>favorite</span> coffee
+                </h2>
+
+                <div class="slider">
+
+                    <button
+                        class="slider-button slider-button-left"
+                        type="button"
+                        aria-label="Previous coffee"
+                    >
+                        <img src="assets/arrow-left.svg" alt="">
+                    </button>
+
+
+                    <div class="coffee-slide">
+
+                        <img
+                            src="assets/coffee-slider-1.png"
+                            alt="S'mores Frappuccino"
+                            class="coffee-image"
+                        >
+
+                        <div class="coffee-info">
+
+                            <h3>S’mores Frappuccino</h3>
+
+                            <p>
+                                This new drink takes an espresso and mixes it with brown
+                                sugar and cinnamon before being topped with oat milk.
+                            </p>
+
+                            <div class="coffee-price">
+                                $5.50
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="slider-button slider-button-right"
+                        type="button"
+                        aria-label="Next coffee"
+                    >
+                        <img src="assets/arrow-right.svg" alt="">
+                    </button>
+
+                </div>
+
+
+                <div class="slider-controls">
+
+                    <span class="slider-control active"></span>
+                    <span class="slider-control"></span>
+                    <span class="slider-control"></span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
 
     <script src="js/script.js"></script>
 
