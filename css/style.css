@@ -26,6 +26,11 @@ body {
 
 .logo {
     display: flex;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.7;
 }
 
 .logo img {
@@ -33,18 +38,38 @@ body {
     height: 60px;
 }
 
-.nav {
+.nav ul {
     display: flex;
     align-items: center;
     gap: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .nav a {
+    position: relative;
     color: #403f3d;
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
+}
+
+.nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    background-color: #403f3d;
+    content: "";
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+    transform: scaleX(1);
 }
 
 .header-actions {
@@ -69,6 +94,11 @@ body {
     border: none;
     background: transparent;
     cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.theme-button:hover {
+    opacity: 0.7;
 }
 
 .theme-button img {
@@ -85,11 +115,38 @@ body {
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
+    transition: opacity 0.3s ease;
 }
 
 .coffee-menu img {
     width: 20px;
     height: 20px;
+}
+
+.coffee-menu:hover {
+    opacity: 0.7;
+}
+
+.burger-button {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #665f55;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.burger-button span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background-color: #403f3d;
 }
 
 .hero-content {
@@ -142,6 +199,11 @@ body {
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #ffffff;
 }
 
 .favorite-coffee {
@@ -234,10 +296,9 @@ body {
     border: 1px solid #665f55;
     border-radius: 50%;
     background: transparent;
-    color: #403f3d;
-    font-size: 24px;
     cursor: pointer;
     transform: translateY(-50%);
+    transition: background-color 0.3s ease;
 }
 
 .slider-button-left {
@@ -246,6 +307,15 @@ body {
 
 .slider-button-right {
     right: 4px;
+}
+
+.slider-button:hover {
+    background-color: #e1d4c9;
+}
+
+.slider-button img {
+    width: 24px;
+    height: 24px;
 }
 
 .slider-controls {
@@ -264,11 +334,6 @@ body {
 
 .slider-control.active {
     background-color: #665f55;
-}
-
-.slider-button img {
-    width: 24px;
-    height: 24px;
 }
 
 .about {
@@ -379,6 +444,11 @@ body {
     border-radius: 100px;
     color: #403f3d;
     text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.app-button:hover {
+    background-color: #e1d4c9;
 }
 
 .app-button img {
@@ -464,6 +534,11 @@ body {
     height: 60px;
     border: 1px solid #c1b6ad;
     border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.social-button:hover {
+    background-color: #e1d4c9;
 }
 
 .social-button img {
@@ -504,7 +579,134 @@ body {
     line-height: 150%;
 }
 
+.contact-item:hover {
+    opacity: 0.7;
+}
+
 .contact-item img {
     width: 20px;
     height: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .header-menu {
+        padding: 20px 0;
+    }
+
+    .nav,
+    .coffee-menu {
+        display: none;
+    }
+
+    .burger-button {
+        display: flex;
+    }
+
+    .header-actions {
+        gap: 12px;
+    }
+
+    .hero-content {
+        min-height: 644px;
+        padding: 100px 60px;
+    }
+
+    .offer {
+        width: 100%;
+        max-width: 530px;
+    }
+
+    .offer h1 {
+        font-size: 60px;
+    }
+
+    .favorite-coffee {
+        padding: 80px 0;
+    }
+
+    .favorite-coffee h2 {
+        font-size: 50px;
+    }
+
+    .slider-button-left {
+        left: 0;
+    }
+
+    .slider-button-right {
+        right: 0;
+    }
+
+    .about {
+        padding-bottom: 80px;
+    }
+
+    .about h2 {
+        font-size: 50px;
+    }
+
+    .about-images {
+        gap: 20px;
+    }
+
+    .about-column {
+        gap: 20px;
+    }
+
+    .about-image-large {
+        height: 500px;
+    }
+
+    .about-image-small {
+        height: 350px;
+    }
+
+    .mobile-app {
+        padding-bottom: 80px;
+    }
+
+    .mobile-app .container {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .mobile-offer {
+        width: 100%;
+    }
+
+    .mobile-offer h2 {
+        font-size: 50px;
+    }
+
+    .mobile-image {
+        width: 100%;
+        max-width: 630px;
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .contacts {
+        padding-bottom: 20px;
+    }
+
+    .contacts-content {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        gap: 60px;
+        padding: 60px;
+    }
+
+    .contacts-offer,
+    .contacts-info {
+        width: 100%;
+    }
+
+    .contacts-offer h2 {
+        font-size: 50px;
+    }
 }
