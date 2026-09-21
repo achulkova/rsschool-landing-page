@@ -8,7 +8,10 @@ html {
 
 body {
     margin: 0;
+    background-color: #ffffff;
+    color: #403f3d;
     font-family: "Inter", sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -54,6 +57,7 @@ body {
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
+    transition: color 0.3s ease;
 }
 
 .nav a::after {
@@ -65,7 +69,7 @@ body {
     background-color: #403f3d;
     content: "";
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .nav a:hover::after {
@@ -91,19 +95,38 @@ body {
     width: 40px;
     height: 40px;
     padding: 0;
-    border: none;
-    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        opacity 0.3s ease;
 }
 
 .theme-button:hover {
     opacity: 0.7;
 }
 
-.theme-button img {
-    width: 24px;
-    height: 24px;
+.light-theme img {
+    width: 22px;
+    height: 22px;
+}
+
+.dark-theme img {
+    width: 18px;
+    height: 18px;
+}
+
+.light-theme.active {
+    border-color: #665f55;
+    background-color: #665f55;
+}
+
+.dark-theme.active {
+    border-color: #665f55;
+    background-color: #665f55;
 }
 
 .coffee-menu {
@@ -115,7 +138,7 @@ body {
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, color 0.3s ease;
 }
 
 .coffee-menu img {
@@ -140,6 +163,7 @@ body {
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
+    transition: border-color 0.3s ease;
 }
 
 .burger-button span {
@@ -147,6 +171,7 @@ body {
     width: 16px;
     height: 2px;
     background-color: #403f3d;
+    transition: background-color 0.3s ease;
 }
 
 .hero-content {
@@ -224,6 +249,7 @@ body {
     font-weight: 600;
     line-height: 125%;
     text-align: center;
+    transition: color 0.3s ease;
 }
 
 .favorite-coffee h2 span {
@@ -268,6 +294,7 @@ body {
     font-size: 24px;
     font-weight: 600;
     line-height: 125%;
+    transition: color 0.3s ease;
 }
 
 .coffee-info p {
@@ -276,6 +303,7 @@ body {
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
+    transition: color 0.3s ease;
 }
 
 .coffee-price {
@@ -283,6 +311,7 @@ body {
     font-size: 24px;
     font-weight: 600;
     line-height: 125%;
+    transition: color 0.3s ease;
 }
 
 .slider-button {
@@ -299,7 +328,9 @@ body {
     background: transparent;
     cursor: pointer;
     transform: translateY(-50%);
-    transition: background-color 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .slider-button-left {
@@ -353,6 +384,7 @@ body {
     font-size: 60px;
     font-weight: 600;
     line-height: 125%;
+    transition: color 0.3s ease;
 }
 
 .about h2 span {
@@ -414,6 +446,7 @@ body {
     font-size: 60px;
     font-weight: 600;
     line-height: 125%;
+    transition: color 0.3s ease;
 }
 
 .mobile-offer h2 span {
@@ -427,6 +460,7 @@ body {
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
+    transition: color 0.3s ease;
 }
 
 .app-buttons {
@@ -445,7 +479,10 @@ body {
     border-radius: 100px;
     color: #403f3d;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .app-button:hover {
@@ -578,6 +615,7 @@ body {
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
+    transition: opacity 0.3s ease;
 }
 
 .contact-item:hover {
@@ -589,8 +627,62 @@ body {
     height: 20px;
 }
 
-@media (max-width: 1200px) {
+body.dark-theme {
+    background-color: #403f3d;
+    color: #e1d4c9;
+}
 
+body.dark-theme .nav a,
+body.dark-theme .coffee-menu,
+body.dark-theme .favorite-coffee h2,
+body.dark-theme .coffee-info h3,
+body.dark-theme .coffee-info p,
+body.dark-theme .coffee-price,
+body.dark-theme .about h2,
+body.dark-theme .mobile-offer h2,
+body.dark-theme .mobile-offer p {
+    color: #e1d4c9;
+}
+
+body.dark-theme .nav a::after {
+    background-color: #e1d4c9;
+}
+
+body.dark-theme .burger-button {
+    border-color: #c1b6ad;
+}
+
+body.dark-theme .burger-button span {
+    background-color: #e1d4c9;
+}
+
+body.dark-theme .slider-button {
+    border-color: #c1b6ad;
+}
+
+body.dark-theme .slider-button:hover {
+    background-color: #665f55;
+}
+
+body.dark-theme .slider-control.active {
+    background-color: #e1d4c9;
+}
+
+body.dark-theme .app-button {
+    border-color: #c1b6ad;
+    color: #e1d4c9;
+}
+
+body.dark-theme .app-button:hover {
+    background-color: #665f55;
+}
+
+body.dark-theme .theme-button.active {
+    border-color: #c1b6ad;
+    background-color: #665f55;
+}
+
+@media (max-width: 1200px) {
     .container {
         padding: 0 30px;
     }
@@ -621,7 +713,6 @@ body {
 }
 
 @media (max-width: 768px) {
-
     .container {
         padding: 0 16px;
     }
@@ -751,7 +842,6 @@ body {
 }
 
 @media (max-width: 600px) {
-
     .hero-content {
         min-height: 600px;
         padding: 60px 40px;
@@ -812,7 +902,6 @@ body {
 }
 
 @media (max-width: 380px) {
-
     .container {
         padding: 0 16px;
     }
