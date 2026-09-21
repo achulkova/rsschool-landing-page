@@ -41,15 +41,28 @@ body {
 .nav {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-left: 40px;
 }
 
-.nav ul {
+.nav-links {
     display: flex;
     align-items: center;
     gap: 40px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.menu-navigation {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+.menu-navigation li {
+    display: flex;
 }
 
 .nav a {
@@ -856,8 +869,14 @@ body.dark-theme .menu-more-button {
         padding: 0 40px;
     }
 
-    .nav,
-    .coffee-menu {
+    .nav {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+    }
+
+    .nav-links,
+    .menu-navigation {
         display: none;
     }
 
