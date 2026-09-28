@@ -36,3 +36,67 @@ if (darkThemeButton) {
         setTheme("dark");
     });
 }
+
+const menuGrid = document.querySelector(".menu-grid");
+const menuTabs = document.querySelectorAll(".menu-tab");
+
+async function loadProducts() {
+    if (!menuGrid) {
+        return;
+    }
+
+    const response = await fetch("products.json");
+    const products = await response.json();
+
+    function showCategory(category) {
+        const categoryProducts = products.filter(
+            product => product.category === category
+        );
+
+        renderProducts(categoryProducts);
+    }
+
+    showCategory("coffee");
+
+    menuTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const category = tab.dataset.category;
+
+            menuTabs.forEach(button => {
+                button.classList.remove("active");
+            });
+
+            tab.classList.add("active");
+
+            showCategory(category);
+        });
+    });
+}
+
+function renderProducts(products) {
+    menuGrid.innerHTML = "";
+
+    products.forEach((product, index) => {
+        const card = document.createElement("article");
+        card.classList.add("menu-card");
+
+        card.innerHTML = `
+            <div class="menu-card-image">
+                <img
+                    src="assets/${product.category}-${index + 1}.jpg"
+                    alt="${product.name}"
+                >
+            </div>
+
+            <div class="menu-card-content">
+                <h2>${product.name}</h2>
+                <p>${product.description}</p>
+                <div class="menu-card-price">$${product.price}</div>
+            </div>
+        `;
+
+        menuGrid.append(card);
+    });
+}
+
+loadProducts();
