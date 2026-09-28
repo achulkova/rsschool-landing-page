@@ -1467,7 +1467,7 @@ body.modal-open {
         z-index: 900;
         width: 100%;
         height: calc(100vh - 100px);
-        overflow-y: auto;
+        overflow: hidden;
         background-color: #e1d4c9;
         transform: translateX(100%);
         visibility: hidden;
