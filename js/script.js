@@ -321,3 +321,89 @@ window.addEventListener("resize", () => {
 });
 
 loadProducts();
+
+const burgerButton = document.querySelector(".burger-button");
+const header = document.querySelector("header");
+
+if (burgerButton && header) {
+    const mobileMenu = document.createElement("div");
+    mobileMenu.classList.add("mobile-menu");
+
+    const isMenuPage = Boolean(document.querySelector(".menu-section"));
+
+    mobileMenu.innerHTML = `
+        <nav class="mobile-menu-nav">
+            <a href="index.html#favorite-coffee">Favorite coffee</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#mobile-app">Mobile app</a>
+            <a href="#contacts">Contact us</a>
+
+            <a href="menu.html" class="mobile-menu-coffee">
+                <span>Menu</span>
+                <img src="assets/coffee-cup.svg" alt="">
+            </a>
+        </nav>
+    `;
+
+    header.append(mobileMenu);
+
+    function openBurgerMenu() {
+        burgerButton.classList.add("open");
+        mobileMenu.classList.add("open");
+        document.body.classList.add("burger-open");
+
+        burgerButton.setAttribute("aria-label", "Close navigation menu");
+        burgerButton.setAttribute("aria-expanded", "true");
+    }
+
+    function closeBurgerMenu() {
+        burgerButton.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("burger-open");
+
+        burgerButton.setAttribute("aria-label", "Open navigation menu");
+        burgerButton.setAttribute("aria-expanded", "false");
+    }
+
+    burgerButton.setAttribute("aria-expanded", "false");
+
+    burgerButton.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("open")) {
+            closeBurgerMenu();
+        } else {
+            openBurgerMenu();
+        }
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeBurgerMenu);
+    });
+
+    document.addEventListener("keydown", event => {
+        if (
+            event.key === "Escape" &&
+            mobileMenu.classList.contains("open")
+        ) {
+            closeBurgerMenu();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 769) {
+            closeBurgerMenu();
+        }
+    });
+
+    if (isMenuPage) {
+        const contactLink = mobileMenu.querySelector('a[href="#contacts"]');
+
+        contactLink.addEventListener("click", event => {
+            event.preventDefault();
+            closeBurgerMenu();
+
+            document.querySelector("#contacts")?.scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    }
+}
