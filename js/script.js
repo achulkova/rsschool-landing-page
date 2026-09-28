@@ -43,6 +43,7 @@ const menuMoreButton = document.querySelector(".menu-more-button");
 
 let showAllProducts = false;
 let currentProducts = [];
+let wasMobile = window.innerWidth <= 768;
 
 async function loadProducts() {
     if (!menuGrid) {
@@ -123,5 +124,20 @@ if (menuMoreButton) {
         renderProducts(currentProducts);
     });
 }
+
+window.addEventListener("resize", () => {
+    if (!menuGrid || currentProducts.length === 0) {
+        return;
+    }
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile !== wasMobile) {
+        showAllProducts = false;
+        wasMobile = isMobile;
+    }
+
+    renderProducts(currentProducts);
+});
 
 loadProducts();
