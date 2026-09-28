@@ -407,3 +407,66 @@ if (burgerButton && header) {
         });
     }
 }
+
+const sliderTrack = document.querySelector(".slider-track");
+const sliderSlides = document.querySelectorAll(".coffee-slide");
+const sliderPrevButton = document.querySelector(".slider-button-left");
+const sliderNextButton = document.querySelector(".slider-button-right");
+const sliderControls = document.querySelectorAll(".slider-control");
+
+if (
+    sliderTrack &&
+    sliderSlides.length > 0 &&
+    sliderPrevButton &&
+    sliderNextButton
+) {
+    let currentSlide = 0;
+
+    function updateSlider() {
+        sliderTrack.style.transform =
+            `translateX(-${currentSlide * 100}%)`;
+
+        sliderControls.forEach((control, index) => {
+            control.classList.toggle(
+                "active",
+                index === currentSlide
+            );
+        });
+    }
+
+    function showNextSlide() {
+        currentSlide =
+            (currentSlide + 1) % sliderSlides.length;
+
+        updateSlider();
+    }
+
+    function showPreviousSlide() {
+        currentSlide =
+            (currentSlide - 1 + sliderSlides.length) %
+            sliderSlides.length;
+
+        updateSlider();
+    }
+
+    sliderNextButton.addEventListener(
+        "click",
+        showNextSlide
+    );
+
+    sliderPrevButton.addEventListener(
+        "click",
+        showPreviousSlide
+    );
+
+    sliderControls.forEach((control, index) => {
+        control.addEventListener("click", () => {
+            currentSlide = index;
+            updateSlider();
+        });
+    });
+
+    window.addEventListener("resize", updateSlider);
+
+    updateSlider();
+}
