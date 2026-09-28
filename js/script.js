@@ -81,18 +81,194 @@ async function loadProducts() {
     });
 }
 
+function openProductModal(product, index) {
+    const overlay = document.createElement("div");
+    overlay.classList.add("modal-overlay");
+
+    const modal = document.createElement("div");
+    modal.classList.add("product-modal");
+
+    modal.innerHTML = `
+        <div class="product-modal-image">
+            <img
+                src="assets/${product.category}-${index + 1}.jpg"
+                alt="${product.name}"
+            >
+        </div>
+
+        <div class="product-modal-content">
+            <h2>${product.name}</h2>
+
+            <p class="product-modal-description">
+                ${product.description}
+            </p>
+
+            <div class="product-modal-section">
+                <span class="product-modal-label">Size</span>
+
+                <div class="product-modal-options">
+                    <button
+                        class="modal-option size-option active"
+                        type="button"
+                        data-size="s"
+                    >
+                        <span>S</span>
+                        ${product.sizes.s.size}
+                    </button>
+
+                    <button
+                        class="modal-option size-option"
+                        type="button"
+                        data-size="m"
+                    >
+                        <span>M</span>
+                        ${product.sizes.m.size}
+                    </button>
+
+                    <button
+                        class="modal-option size-option"
+                        type="button"
+                        data-size="l"
+                    >
+                        <span>L</span>
+                        ${product.sizes.l.size}
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-modal-section">
+                <span class="product-modal-label">Additives</span>
+
+                <div class="product-modal-options">
+                    ${product.additives.map((additive, additiveIndex) => `
+    <button
+        class="modal-option additive-option"
+        type="button"
+        data-additive-index="${additiveIndex}"
+    >
+        <span>${additiveIndex + 1}</span>
+        ${additive.name}
+    </button>
+`).join("")}
+                </div>
+            </div>
+<div class="product-modal-total">
+    <span>Total:</span>
+    <span class="product-modal-total-price">$${product.price}</span>
+</div>
+
+            <div class="product-modal-note">
+                <span>ⓘ</span>
+
+                <p>
+                    The cost is not final. Download our mobile app to see
+                    the final price and place your order. Earn loyalty points
+                    and enjoy your favorite coffee with up to 20% discount.
+                </p>
+            </div>
+
+            <button class="product-modal-close" type="button">
+                Close
+            </button>
+        </div>
+    `;
+
+    const sizeButtons = modal.querySelectorAll(".size-option");
+    const additiveButtons = modal.querySelectorAll(".additive-option");
+    const totalPrice = modal.querySelector(".product-modal-total-price");
+
+    let selectedSize = "s";
+    const selectedAdditives = new Set();
+
+    function updateTotalPrice() {
+        let total = Number(product.price);
+
+        total += Number(product.sizes[selectedSize]["add-price"]);
+
+        selectedAdditives.forEach(index => {
+            total += Number(product.additives[index]["add-price"]);
+        });
+
+        totalPrice.textContent = `$${total.toFixed(2)}`;
+    }
+
+    sizeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            sizeButtons.forEach(sizeButton => {
+                sizeButton.classList.remove("active");
+            });
+
+            button.classList.add("active");
+            selectedSize = button.dataset.size;
+
+            updateTotalPrice();
+        });
+    });
+
+    additiveButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const additiveIndex = Number(button.dataset.additiveIndex);
+
+            if (selectedAdditives.has(additiveIndex)) {
+                selectedAdditives.delete(additiveIndex);
+                button.classList.remove("active");
+            } else {
+                selectedAdditives.add(additiveIndex);
+                button.classList.add("active");
+            }
+
+            updateTotalPrice();
+        });
+    });
+
+    overlay.append(modal);
+    document.body.append(overlay);
+
+    document.body.classList.add("modal-open");
+
+    function closeModal() {
+        overlay.remove();
+        document.body.classList.remove("modal-open");
+        document.removeEventListener("keydown", handleEscape);
+    }
+
+    function handleEscape(event) {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    }
+
+    const closeButton = modal.querySelector(".product-modal-close");
+
+    closeButton.addEventListener("click", closeModal);
+
+    overlay.addEventListener("click", event => {
+        if (event.target === overlay) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener("keydown", handleEscape);
+}
+
 function renderProducts(products) {
     menuGrid.innerHTML = "";
 
     const isMobile = window.innerWidth <= 768;
+
     const visibleProducts =
-        isMobile && !showAllProducts ? products.slice(0, 4) : products;
+        isMobile && !showAllProducts
+            ? products.slice(0, 4)
+            : products;
 
     if (menuMoreButton) {
         const hasHiddenProducts =
-            isMobile && !showAllProducts && products.length > 4;
+            isMobile &&
+            !showAllProducts &&
+            products.length > 4;
 
-        menuMoreButton.style.display = hasHiddenProducts ? "flex" : "none";
+        menuMoreButton.style.display =
+            hasHiddenProducts ? "flex" : "none";
     }
 
     visibleProducts.forEach((product, index) => {
@@ -113,6 +289,10 @@ function renderProducts(products) {
                 <div class="menu-card-price">$${product.price}</div>
             </div>
         `;
+
+        card.addEventListener("click", () => {
+            openProductModal(product, index);
+        });
 
         menuGrid.append(card);
     });
