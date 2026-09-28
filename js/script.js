@@ -39,6 +39,10 @@ if (darkThemeButton) {
 
 const menuGrid = document.querySelector(".menu-grid");
 const menuTabs = document.querySelectorAll(".menu-tab");
+const menuMoreButton = document.querySelector(".menu-more-button");
+
+let showAllProducts = false;
+let currentProducts = [];
 
 async function loadProducts() {
     if (!menuGrid) {
@@ -52,6 +56,9 @@ async function loadProducts() {
         const categoryProducts = products.filter(
             product => product.category === category
         );
+
+        currentProducts = categoryProducts;
+        showAllProducts = false;
 
         renderProducts(categoryProducts);
     }
@@ -76,7 +83,18 @@ async function loadProducts() {
 function renderProducts(products) {
     menuGrid.innerHTML = "";
 
-    products.forEach((product, index) => {
+    const isMobile = window.innerWidth <= 768;
+    const visibleProducts =
+        isMobile && !showAllProducts ? products.slice(0, 4) : products;
+
+    if (menuMoreButton) {
+        const hasHiddenProducts =
+            isMobile && !showAllProducts && products.length > 4;
+
+        menuMoreButton.style.display = hasHiddenProducts ? "flex" : "none";
+    }
+
+    visibleProducts.forEach((product, index) => {
         const card = document.createElement("article");
         card.classList.add("menu-card");
 
@@ -96,6 +114,13 @@ function renderProducts(products) {
         `;
 
         menuGrid.append(card);
+    });
+}
+
+if (menuMoreButton) {
+    menuMoreButton.addEventListener("click", () => {
+        showAllProducts = true;
+        renderProducts(currentProducts);
     });
 }
 

@@ -838,7 +838,7 @@ body.dark-theme .menu-more-button {
     color: #e1d4c9;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1439px) {
     .container {
         padding: 0 30px;
     }
@@ -965,14 +965,6 @@ body.dark-theme .menu-more-button {
     .menu-grid {
         grid-template-columns: repeat(2, 310px);
         justify-content: center;
-    }
-
-    .menu-card:nth-child(n + 5) {
-        display: none;
-    }
-
-    .menu-more-button {
-        display: flex;
     }
 }
 
