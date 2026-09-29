@@ -1098,6 +1098,54 @@ body.dark-theme .menu-more-button {
     color: #e1d4c9;
 }
 
+body.dark-theme .product-modal {
+    border: 1px solid #c1b6ad;
+    background-color: #403f3d;
+}
+
+body.dark-theme .product-modal-content h2,
+body.dark-theme .product-modal-description,
+body.dark-theme .product-modal-label,
+body.dark-theme .product-modal-total,
+body.dark-theme .product-modal-note p {
+    color: #e1d4c9;
+}
+
+body.dark-theme .modal-option {
+    border-color: #665f55;
+    color: #e1d4c9;
+}
+
+body.dark-theme .modal-option span {
+    background-color: #665f55;
+    color: #e1d4c9;
+}
+
+body.dark-theme .modal-option.active {
+    border-color: #e1d4c9;
+    background-color: #e1d4c9;
+    color: #403f3d;
+}
+
+body.dark-theme .modal-option.active span {
+    background-color: #665f55;
+    color: #e1d4c9;
+}
+
+body.dark-theme .product-modal-note {
+    border-color: #665f55;
+}
+
+body.dark-theme .product-modal-close {
+    border-color: #c1b6ad;
+    color: #e1d4c9;
+}
+
+body.dark-theme .product-modal-close:hover {
+    background-color: #e1d4c9;
+    color: #403f3d;
+}
+
 body.modal-open {
     overflow: hidden;
 }

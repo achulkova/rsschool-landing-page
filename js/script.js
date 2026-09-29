@@ -408,65 +408,118 @@ if (burgerButton && header) {
     }
 }
 
+
 const sliderTrack = document.querySelector(".slider-track");
-const sliderSlides = document.querySelectorAll(".coffee-slide");
+const originalSlides = document.querySelectorAll(".coffee-slide");
 const sliderPrevButton = document.querySelector(".slider-button-left");
 const sliderNextButton = document.querySelector(".slider-button-right");
 const sliderControls = document.querySelectorAll(".slider-control");
 
 if (
     sliderTrack &&
-    sliderSlides.length > 0 &&
+    originalSlides.length > 0 &&
     sliderPrevButton &&
     sliderNextButton
 ) {
-    let currentSlide = 0;
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
 
-    function updateSlider() {
+    sliderTrack.append(firstClone);
+    sliderTrack.prepend(lastClone);
+
+    const sliderSlides = sliderTrack.querySelectorAll(".coffee-slide");
+
+    let currentSlide = 1;
+    let isMoving = false;
+
+    function moveSlider(animate = true) {
+        sliderTrack.style.transition = animate
+            ? "transform 0.6s ease"
+            : "none";
+
         sliderTrack.style.transform =
             `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function updateControls() {
+        let realSlide = currentSlide - 1;
+
+        if (currentSlide === 0) {
+            realSlide = originalSlides.length - 1;
+        }
+
+        if (currentSlide === sliderSlides.length - 1) {
+            realSlide = 0;
+        }
 
         sliderControls.forEach((control, index) => {
             control.classList.toggle(
                 "active",
-                index === currentSlide
+                index === realSlide
             );
         });
     }
 
     function showNextSlide() {
-        currentSlide =
-            (currentSlide + 1) % sliderSlides.length;
+        if (isMoving) {
+            return;
+        }
 
-        updateSlider();
+        isMoving = true;
+        currentSlide++;
+
+        moveSlider();
+        updateControls();
     }
 
     function showPreviousSlide() {
-        currentSlide =
-            (currentSlide - 1 + sliderSlides.length) %
-            sliderSlides.length;
+        if (isMoving) {
+            return;
+        }
 
-        updateSlider();
+        isMoving = true;
+        currentSlide--;
+
+        moveSlider();
+        updateControls();
     }
 
-    sliderNextButton.addEventListener(
-        "click",
-        showNextSlide
-    );
+    sliderTrack.addEventListener("transitionend", () => {
+        if (currentSlide === sliderSlides.length - 1) {
+            currentSlide = 1;
+            moveSlider(false);
+        }
 
-    sliderPrevButton.addEventListener(
-        "click",
-        showPreviousSlide
-    );
+        if (currentSlide === 0) {
+            currentSlide = originalSlides.length;
+            moveSlider(false);
+        }
+
+        updateControls();
+        isMoving = false;
+    });
+
+    sliderNextButton.addEventListener("click", showNextSlide);
+    sliderPrevButton.addEventListener("click", showPreviousSlide);
 
     sliderControls.forEach((control, index) => {
         control.addEventListener("click", () => {
-            currentSlide = index;
-            updateSlider();
+            if (isMoving) {
+                return;
+            }
+
+            isMoving = true;
+            currentSlide = index + 1;
+
+            moveSlider();
+            updateControls();
         });
     });
 
-    window.addEventListener("resize", updateSlider);
+    window.addEventListener("resize", () => {
+        moveSlider(false);
+    });
 
-    updateSlider();
+    moveSlider(false);
+    updateControls();
 }
