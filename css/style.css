@@ -1671,3 +1671,118 @@ body.dark-theme .slider-button:active {
 body.dark-theme .slider-button:active img {
     filter: none;
 }
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 16px;
+    }
+
+    .product-modal {
+        max-width: 688px;
+        padding: 12px;
+        gap: 16px;
+    }
+
+    .product-modal-image {
+        flex: 0 0 220px;
+        width: 220px;
+        height: 220px;
+    }
+
+    .product-modal-image img {
+        width: 240px;
+        height: 240px;
+        margin: -10px;
+    }
+
+    .product-modal-description {
+        margin-bottom: 12px;
+    }
+
+    .product-modal-section {
+        margin-bottom: 12px;
+    }
+
+    .modal-option {
+        min-height: 40px;
+        padding: 5px 12px 5px 5px;
+    }
+
+    .modal-option span {
+        width: 28px;
+        height: 28px;
+    }
+
+    .product-modal-total {
+        margin-bottom: 12px;
+    }
+
+    .product-modal-note {
+        padding: 8px 0;
+    }
+
+    .product-modal-close {
+        min-height: 40px;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 700px) {
+    .modal-overlay {
+        padding: 8px 16px;
+        overflow: hidden;
+        align-items: center;
+    }
+
+    .product-modal {
+        max-width: 342px;
+        margin: 0;
+        padding: 12px;
+    }
+
+    .product-modal-image {
+        display: none;
+    }
+
+    .product-modal-content h2 {
+        margin-bottom: 8px;
+    }
+
+    .product-modal-description {
+        margin-bottom: 12px;
+    }
+
+    .product-modal-section {
+        margin-bottom: 12px;
+    }
+
+    .product-modal-label {
+        margin-bottom: 6px;
+    }
+
+    .product-modal-options {
+        gap: 6px;
+    }
+
+    .modal-option {
+        min-height: 38px;
+        padding: 4px 10px 4px 4px;
+    }
+
+    .modal-option span {
+        width: 28px;
+        height: 28px;
+    }
+
+    .product-modal-total {
+        margin-bottom: 10px;
+    }
+
+    .product-modal-note {
+        padding: 8px 0;
+    }
+
+    .product-modal-close {
+        min-height: 40px;
+        margin-top: 10px;
+    }
+}
